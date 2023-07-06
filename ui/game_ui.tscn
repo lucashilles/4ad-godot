@@ -1,0 +1,64 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4cpqwbooerne"]
+
+[ext_resource type="Script" path="res://ui/game_ui.gd" id="1_b52w5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fi221"]
+size = Vector2(64, 16)
+
+[node name="GameUi" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 1
+script = ExtResource("1_b52w5")
+
+[node name="Container" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 1136.0
+offset_bottom = 624.0
+size_flags_horizontal = 8
+size_flags_vertical = 10
+
+[node name="Button" type="Button" parent="Container"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "New Room"
+
+[node name="Label" type="Label" parent="Container"]
+layout_mode = 2
+text = "Debug mouse"
+
+[node name="TemplateRoom" type="Node2D" parent="."]
+visible = false
+z_index = 1
+position = Vector2(0, 384)
+
+[node name="Line2D" type="Line2D" parent="TemplateRoom"]
+position = Vector2(0, -64)
+points = PackedVector2Array(0, 0, 0, -128, 448, -128, 448, 0, 0, 0)
+width = 4.0
+begin_cap_mode = 1
+
+[node name="Line2D2" type="Line2D" parent="TemplateRoom"]
+position = Vector2(0, -64)
+points = PackedVector2Array(128, 64, 192, 0)
+width = 4.0
+
+[node name="Line2D3" type="Line2D" parent="TemplateRoom"]
+position = Vector2(128, -64)
+points = PackedVector2Array(192, 64, 128, 0)
+width = 4.0
+
+[node name="TemplateDoor" type="Area2D" parent="TemplateRoom"]
+
+[node name="Polygon2D" type="Polygon2D" parent="TemplateRoom/TemplateDoor"]
+position = Vector2(224, -64)
+offset = Vector2(-224, 0)
+polygon = PackedVector2Array(200, 8, 200, -8, 248, -8, 248, 8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TemplateRoom/TemplateDoor"]
+position = Vector2(224, -64)
+shape = SubResource("RectangleShape2D_fi221")
+disabled = true
+
+[connection signal="pressed" from="Container/Button" to="." method="_on_button_pressed"]

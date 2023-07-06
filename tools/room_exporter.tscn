@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7ys731vnbl1m"]
+
+[ext_resource type="Script" path="res://tools/exporter.gd" id="1_ufe76"]
+[ext_resource type="PackedScene" uid="uid://dj4qj7m708era" path="res://tools/door_marker.tscn" id="2_hr3oi"]
+
+[node name="RoomExporter" type="Node"]
+script = ExtResource("1_ufe76")
+id = 66
+type = 2
+
+[node name="Line2D" type="Line2D" parent="."]
+position = Vector2(16, 0)
+points = PackedVector2Array(16, 0, 16, -8, 0, -8, 0, -16, -16, -16, -16, -24, 0, -24, 0, -32, 16, -32, 16, -40, 24, -40, 24, 0)
+width = 1.0
+
+[node name="door" type="Node" parent="."]
+
+[node name="DoorMarker2" parent="door" instance=ExtResource("2_hr3oi")]
+position = Vector2(36, 0)
+
+[node name="DoorMarker3" parent="door" instance=ExtResource("2_hr3oi")]
+position = Vector2(0, -20)
+rotation = 1.5708
+angle = 1
+
+[node name="DoorMarker4" parent="door" instance=ExtResource("2_hr3oi")]
+position = Vector2(36, -40)
+rotation = 3.14159
+angle = 2

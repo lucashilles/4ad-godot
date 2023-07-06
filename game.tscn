@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://ccq2rp8h47mm1"]
+
+[ext_resource type="Script" path="res://game.gd" id="1_5fdcm"]
+[ext_resource type="PackedScene" uid="uid://bveop46tww4ws" path="res://board.tscn" id="2_2vqp2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mbokb"]
+radius = 32.0
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_5fdcm")
+
+[node name="Board" parent="." instance=ExtResource("2_2vqp2")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_mbokb")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(688, -240)
+zoom = Vector2(0.5, 0.5)
